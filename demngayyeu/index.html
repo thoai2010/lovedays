@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[url('nen.jpg')] h-full max-w-[800px] mx-auto">
+    <div class="w-[800px] h-full p-8 flex-col justify-start items-center inline-flex">
+        <div class="justify-start items-center gap-8 flex">
+            <p class="text-white text-[35px] font-serif leading-loose">LOVE DAYS</p>
+        </div>
+        <div class="w-[300px] h-[120px] bg-[#F8C8C8] mt-[50px] rounded-3xl justify-start items-center gap-8 flex ">
+            <div id="clock" class="w-full h-full pt-[20px] pb-[20px] text-center gap-2 flex-col inline-flex">
+                <date class="text-[#3e3e3e] text-[15px] text-center font-semibold leading-loose">0 DAYS</date>
+                <time class="text-[#3e3e3e] text-[20px] text-center font-semibold leading-loose">00:00:00</time>
+            </div>
+        </div>
+        <div class="justify-start items-center gap-8 flex mt-[50px]">
+            <div class="justify-start gap-2 flex-col inline-flex">
+                <img src="An.png" alt="" class="rounded-full">
+                <p class="text-[#3e3e3e] text-[24px] text-center font-semibold leading-loose">Nguyễn Văn An</p>
+            </div>
+            <div class="justify-start gap-2 flex-col inline-flex">      
+                <p class="text-[#ec407a] text-[40px] text-center font-semibold leading-loose">❤</p>
+                <anni class="text-[#ec407a] text-[24px] font-semibold leading-loose">20/06/2022</anni>
+            </div>
+            <div class="justify-start gap-2 flex-col inline-flex">
+                <img src="Hang.png" alt="" class="rounded-full">
+                <p class="text-[#3e3e3e] text-[24px] text-center font-semibold leading-loose ">Trần Thị Thanh Hằng</p>
+            </div>
+        </div>
+        <div class="justify-start items-center gap-8 flex mt-[50px]">
+            <p class="text-[#3e3e3e] text-[20px] font-serif leading-loose">Thank you for your love 💕</p>
+        </div>
+    </div>
+    <script>
+        const yourDate = new Date("2022-06-20T02:10:26");
+        document.addEventListener('DOMContentLoaded', function(){
+            var rootTime = document.querySelector("time");
+            document.querySelector("anni").textContent = `${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}-${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}-${yourDate.getFullYear()}`;
+            document.querySelector("date").textContent = Math.floor( Math.floor((new Date() - yourDate) / 1000) / 60 / 60 / 24)+" DAYS";
+            function olock() {
+                    var today = new Date(),
+                    hrs = (Math.floor( Math.floor((today - yourDate) / 1000) / 60 / 60)) % 24,
+                    min = (Math.floor( Math.floor((today - yourDate) / 1000) / 60)) % 60,
+                    sec =  Math.floor((today - yourDate) / 1000) % 60;
+                    rootTime.textContent = `${(hrs>9)?hrs:"0"+hrs}:${(min>9)?min:"0"+min}:${(sec>9)?sec:"0"+sec}`;
+            } olock();
+            var timer = setInterval(function(){olock()}, 1000);
+        }, false);
+    </script>
+</body>
+</html>
